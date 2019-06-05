@@ -27,8 +27,17 @@
     "help": "nx help"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "express": "4.16.3"
+  },
   "devDependencies": {
+    "@nrwl/node": "8.1.0",
+    "@types/express": "4.16.0",
+    "@nrwl/express": "8.1.0",
+    "@nrwl/jest": "8.1.0",
+    "jest": "24.1.0",
+    "@types/jest": "24.0.9",
+    "ts-jest": "24.0.0",
     "@nrwl/workspace": "8.1.0",
     "@types/node": "~8.9.4",
     "dotenv": "6.2.0",
