@@ -1,5 +1,5 @@
 {
-  "name": "ascendere-api",
+  "name": "ascendere",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -28,7 +28,9 @@
   },
   "private": true,
   "dependencies": {
-    "express": "4.16.3"
+    "@types/mongoose": "^5.5.5",
+    "express": "4.16.3",
+    "mongoose": "^5.5.13"
   },
   "devDependencies": {
     "@nrwl/node": "8.1.0",

@@ -1,5 +1,5 @@
 {
-  "npmScope": "ascendere-api",
+  "npmScope": "ascendere",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
@@ -10,6 +10,9 @@
   "projects": {
     "encuentros-service": {
       "tags": []
+    },
+    "intefaces": {
+      "tags": ["types", "ascendere-types", "interface", "ascendere-interface"]
     }
   }
 }

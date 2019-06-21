@@ -1,18 +1,10 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- **/
+import Server from './app/server';
+// import { encuentrosRouter } from './app/encuentros.route';
 
-import * as express from 'express';
+const server = Server.init(3000);
 
-const app = express();
+// server.app.use(encuentrosRouter);
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to Encuentros service!' });
+server.start(() => {
+  console.log(`Listening at http://localhost:${server.port}/api`);
 });
-
-const port = process.env.port || 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
-});
-server.on('error', console.error);
