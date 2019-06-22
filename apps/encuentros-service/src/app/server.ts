@@ -22,6 +22,7 @@ export default class Server {
   private connectToMongo() {
     mongoose.connect(
       'mongodb://localhost:27017/encuentros',
+      { useNewUrlParser: true },
       (err: MongoError) => {
         if (!!err) {
           throw Error(

@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-
+import { EncuentroModel } from "@ascendere/intefaces";
 
 export const encuentrosRouter = Router();
 
