@@ -6,7 +6,7 @@ import { Document, Schema, model } from 'mongoose';
  *
  * If recurrent speaker, a user should be created
  */
-class Speaker {
+export class Speaker {
   /**
    * @property ci or passport of Speaker
    */

@@ -2,21 +2,18 @@ import * as express from 'express';
 
 import * as mongoose from 'mongoose';
 import { MongoError } from 'mongodb';
+import { environment } from '../environments/environment.prod';
 
 export default class Server {
   public app: express.Application;
-  public port: number;
+  public port: any;
 
-  private constructor(port: number) {
-    this.port = port;
+  constructor() {
+    this.port = process.env.PORT || 3000;
     this.app = express();
   }
 
-  static init(port: number) {
-    return new Server(port);
-  }
-
-  start(callback?: Function) {
+  listen(callback?: Function) {
     this.app.listen(this.port, callback());
 
     this.connectToMongo();

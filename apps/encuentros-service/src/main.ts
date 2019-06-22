@@ -1,10 +1,10 @@
 import Server from './app/server';
-// import { encuentrosRouter } from './app/encuentros.route';
+import { encuentrosRouter } from './app/encuentros.route';
 
-const server = Server.init(3000);
+const server = new Server();
 
-// server.app.use(encuentrosRouter);
+server.app.use(encuentrosRouter);
 
-server.start(() => {
+server.listen(() => {
   console.log(`Listening at http://localhost:${server.port}/api`);
 });

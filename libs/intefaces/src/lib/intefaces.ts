@@ -1,4 +1,5 @@
 import { Document, Schema, model } from 'mongoose';
+import { Speaker } from './speaker';
 
 /**
  * @class containing all the information related to this event,
@@ -67,50 +68,21 @@ class EncuentrosArts {
  */
 class User {}
 
-/**
- * @class Special person to talk in a event which is neither a student or teacher.
- * And the information must be stored only for this talk.
- *
- * If recurrent speaker, a user should be created
- */
-class Speaker {
-
-  /**
-   * @property ci or passport of Speaker
-   */
-  identifier: string;
-
-  /**
-   * @property speaker name with lastName
-   */
-  name: string;
-
-  /**
-   * @property speaker cv or resume
-   */
-  resume: string;
-
-  /**
-   * @property linkedIn account
-   */
-  linkedIn: string;
-
-  /**
-   * @property mail of the speaker
-   */
-  email: string;
-}
-
 // no necessary to export the schema (keep it private to the module)
 var schema = new Schema({
-  mail: { required: true, type: String },
-  name: { required: false, type: String }
+  name: { required: true, type: String },
+  content: { required: false, type: String },
+  arts: { required: false, type: Schema.Types.ObjectId },
+  date: { required: true, type: Date },
+  postulationsEndDate: { required: false, type: Date },
+  limitOfPeople: { required: false, type: Number },
+  speakers: { required: false, type: [Schema.Types.Mixed] }
 });
 // register each method at schema
-schema.method('foo', User.prototype.foo);
+// schema.method('foo', User.prototype.foo);
 
 // 2) Document
 export interface EncuentroDocument extends User, Document {}
 
 // 3) MODEL
-export const EncuentroModel = model<UserDocument>('User', schema);
+export const EncuentroModel = model<EncuentroDocument>('Encuentro', schema);
