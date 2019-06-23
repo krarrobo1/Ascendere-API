@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { EncuentroModel } from '@ascendere/intefaces';
+import { MongoClient } from 'mongodb';
 
 export const montlyEncuentrosRouter = Router();
 

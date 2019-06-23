@@ -1,8 +1,12 @@
 import { Document, Schema, model } from 'mongoose';
 import { Speaker } from './speaker.interface';
 
+
+
 /**
- * @class containing all the information related to this event,
+ * @class containing all the information related to this event
+ *
+ * TODO: add published attribute for encuentro
  */
 export class Encuentro {
   /**
@@ -43,13 +47,13 @@ export class Encuentro {
   /**
    *@property type of encuentro, since there are different types
    */
-  encuentroType: EncuentrosTypes;
+  encuentroType: EncuentroTypes;
 }
 
 /**
  * @enum Different types of events considered as encuentros
  */
-export enum EncuentrosTypes {
+export enum EncuentroTypes {
   cafeCientifico = 'CAFE-CIENTIFICO',
   vitaminaI = 'VITAMINA-I',
   debateEstudiantil = 'DEBATE-ESTUDIANTIL',
@@ -114,7 +118,7 @@ var schema = new Schema({
 // schema.method('foo', User.prototype.foo);
 
 // 2) Document
-export interface EncuentroDocument extends User, Document {}
+export interface EncuentroDocument extends Encuentro, Document {}
 
 // 3) MODEL
 export const EncuentroModel = model<EncuentroDocument>('Encuentro', schema);
