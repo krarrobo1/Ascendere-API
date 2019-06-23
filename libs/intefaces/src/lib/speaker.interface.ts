@@ -39,7 +39,12 @@ let schema = new Schema({
   name: { required: false, type: String },
   resume: { required: true, type: String },
   linkedIn: { required: true, type: String },
-  email: { required: true, type: String }
+  email: {
+    required: true,
+    type: String,
+    unique: true,
+    match: /\S+@\S+\.\S+/
+  }
 });
 
 // register each method at schema
@@ -48,7 +53,7 @@ let schema = new Schema({
 /**
  * @document interface for speaker module
  */
-export interface SpeakerDocument extends Speaker, Document { }
+export interface SpeakerDocument extends Speaker, Document {}
 
 /**
  * @model speaker

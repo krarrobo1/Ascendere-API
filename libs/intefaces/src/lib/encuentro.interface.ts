@@ -1,5 +1,5 @@
 import { Document, Schema, model } from 'mongoose';
-import { Speaker } from './speaker';
+import { Speaker } from './speaker.interface';
 
 /**
  * @class containing all the information related to this event,
@@ -39,6 +39,21 @@ export class Encuentro {
    * @property speakers who are going to drive the event, this can also be a teacher or student.
    */
   speakers: Array<Speaker | User>;
+
+  /**
+   *@property type of encuentro, since there are different types
+   */
+  encuentroType: EncuentrosTypes;
+}
+
+/**
+ * @enum Different types of events considered as encuentros
+ */
+export enum EncuentrosTypes {
+  cafeCientifico = 'CAFE-CIENTIFICO',
+  vitaminaI = 'VITAMINA-I',
+  debateEstudiantil = 'DEBATE-ESTUDIANTIL',
+  talleresAcademicos = 'TALLERES-ACADEMICOS'
 }
 
 class EncuentrosArts {
@@ -76,7 +91,24 @@ var schema = new Schema({
   date: { required: true, type: Date },
   postulationsEndDate: { required: false, type: Date },
   limitOfPeople: { required: false, type: Number },
-  speakers: { required: false, type: [Schema.Types.Mixed] }
+  speakers: {
+    required: false,
+    type: [Schema.Types.Mixed]
+  },
+  encuentroType: {
+    type: String,
+    default: 'CAFE-CIENTIFICO',
+    required: true,
+    enum: {
+      values: [
+        'CAFE-CIENTIFICO',
+        'VITAMINA-I',
+        'DEBATE-ESTUDIANTIL',
+        'TALLERES-ACADEMICOS'
+      ],
+      message: '{VALUE} is not a valid event type'
+    }
+  }
 });
 // register each method at schema
 // schema.method('foo', User.prototype.foo);

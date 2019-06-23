@@ -1,2 +1,2 @@
-export * from './lib/encuentro';
-export * from './lib/speaker';
+export * from './lib/encuentro.interface';
+export * from './lib/speaker.interface';

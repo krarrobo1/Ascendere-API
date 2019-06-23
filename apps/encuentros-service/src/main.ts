@@ -1,10 +1,14 @@
 import Server from './app/server';
-import { encuentrosRouter } from './app/encuentros.route';
+import { encuentrosRouter } from './routes/encuentros-crud.routes';
+import { montlyEncuentrosRouter } from './routes/encuentros-extras.routes';
 
 const server = new Server();
 
-server.app.use(encuentrosRouter);
+server.app.use('/encuentros-service', [
+  encuentrosRouter,
+  montlyEncuentrosRouter
+]);
 
 server.listen(() => {
-  console.log(`Listening at http://localhost:${server.port}/api`);
+  console.log(`Listening at port ${server.port}`);
 });

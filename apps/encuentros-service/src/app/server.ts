@@ -2,15 +2,26 @@ import * as express from 'express';
 
 import * as mongoose from 'mongoose';
 import { MongoError } from 'mongodb';
-import { environment } from '../environments/environment.prod';
+import * as bodyParser from 'body-parser';
 
 export default class Server {
   public app: express.Application;
   public port: any;
 
+  /**
+   * Create new Express server, and define some middleware
+   */
   constructor() {
     this.port = process.env.PORT || 3000;
     this.app = express();
+
+    // bodyParser use
+    this.app.use(
+      bodyParser.urlencoded({
+        extended: true
+      })
+    );
+    this.app.use(bodyParser.json());
   }
 
   listen(callback?: Function) {
