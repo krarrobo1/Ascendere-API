@@ -1,6 +1,5 @@
 import { Router, Request, Response } from 'express';
 import { EncuentroModel } from '@ascendere/intefaces';
-import { MongoClient } from 'mongodb';
 
 export const montlyEncuentrosRouter = Router();
 
@@ -63,3 +62,9 @@ montlyEncuentrosRouter.get(
     });
   }
 );
+
+/**
+ * TODO: Encuentro Portfolio
+ *
+ * Get all encuentros of any type to be presented in a portfolio, separated by month and year
+ */
