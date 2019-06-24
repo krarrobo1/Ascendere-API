@@ -13,6 +13,15 @@
     },
     "intefaces": {
       "tags": ["types", "ascendere-types", "interface", "ascendere-interface"]
+    },
+    "proyectos-service": {
+      "tags": []
+    },
+    "indev-express-server": {
+      "tags": []
+    },
+    "indev-error": {
+      "tags": []
     }
   }
 }

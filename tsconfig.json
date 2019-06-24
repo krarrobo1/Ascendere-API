@@ -17,7 +17,11 @@
     "baseUrl": ".",
     "paths": {
       "@ascendere/types": ["libs/types/src/index.ts"],
-      "@ascendere/intefaces": ["libs/intefaces/src/index.ts"]
+      "@ascendere/intefaces": ["libs/intefaces/src/index.ts"],
+      "@ascendere/indev-express-server": [
+        "libs/indev-express-server/src/index.ts"
+      ],
+      "@ascendere/indev-error": ["libs/indev-error/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

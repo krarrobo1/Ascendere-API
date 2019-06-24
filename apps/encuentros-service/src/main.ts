@@ -1,9 +1,18 @@
-import Server from './app/server';
-import { encuentrosRouter } from './routes/encuentros-crud.routes';
-import { montlyEncuentrosRouter } from './routes/encuentros-extras.routes';
-import { inscripcionEncuentroRouter } from './routes/inscripcion-encuentro.routes';
+import { encuentrosRouter } from './app/encuentros-crud.routes';
+import { montlyEncuentrosRouter } from './app/encuentros-extras.routes';
+import { inscripcionEncuentroRouter } from './app/inscripcion-encuentro.routes';
 
-const server = new Server();
+import {
+  IndevExpressServer,
+  IndevDatabase
+} from '@ascendere/indev-express-server';
+
+const server = new IndevExpressServer({
+  PORT: Number(process.env.PORT) || 3000,
+  DATABASE: IndevDatabase.mongoDB,
+  DB_URI: 'mongodb://localhost:27017/ascendere',
+  USE_BODYPARSER: true
+});
 
 server.app.use('/encuentros-service', [
   encuentrosRouter,
@@ -11,6 +20,4 @@ server.app.use('/encuentros-service', [
   inscripcionEncuentroRouter
 ]);
 
-server.listen(() => {
-  console.log(`Listening at port ${server.port}`);
-});
+server.listen();
