@@ -15,8 +15,7 @@
           "options": {
             "outputPath": "dist/apps/encuentros-service",
             "main": "apps/encuentros-service/src/main.ts",
-            "tsConfig": "apps/encuentros-service/tsconfig.app.json",
-            "assets": ["apps/encuentros-service/src/assets"]
+            "tsConfig": "apps/encuentros-service/tsconfig.app.json"
           },
           "configurations": {
             "production": {
@@ -119,8 +118,7 @@
           "options": {
             "outputPath": "dist/apps/proyectos-service",
             "main": "apps/proyectos-service/src/main.ts",
-            "tsConfig": "apps/proyectos-service/tsconfig.app.json",
-            "assets": ["apps/proyectos-service/src/assets"]
+            "tsConfig": "apps/proyectos-service/tsconfig.app.json"
           },
           "configurations": {
             "production": {
