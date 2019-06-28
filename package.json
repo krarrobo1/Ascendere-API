@@ -28,10 +28,11 @@
   },
   "private": true,
   "dependencies": {
-    "express": "4.16.3",
     "@types/mongoose": "^5.5.5",
     "body-parser": "^1.19.0",
-    "mongoose": "^5.5.13"
+    "express": "4.16.3",
+    "mongoose": "^5.5.13",
+    "mongoose-unique-validator": "^2.0.3"
   },
   "devDependencies": {
     "@nrwl/node": "8.1.0",

@@ -25,6 +25,29 @@ userRouter.get('/usuario/:id', (request: Request, response: Response) => {
 
 userRouter.post('/usuario', (request: Request, response: Response) => {
   const body = request.body;
+  let newUser = new UserModel({
+    name: body.name,
+    lastName: body.lastName,
+    birthDate: body.birthDate,
+    nationality: body.nationality,
+    ci: body.ci,
+    email: body.email,
+    password: body.password,
+    phoneNumber: body.phoneNumber
+  });
+  newUser.save({}, (err, user) => {
+    if (err) response.status(500).json({ ok: false, ...err });
+    response.status(200).json({
+      ok: true,
+      usuario: user
+    });
+  });
+});
 
-  let newUser = new UserModel({});
+userRouter.put('/usuario/:id', (request: Request, response: Response) => {
+  const id = request.params.id;
+  const body = request.body;
+  UserModel.findByIdAndUpdate(id, body, { new: true }, (err, user) => {
+    if (err) response.status(500).json({ ok: false, ...err });
+  });
 });
