@@ -1,8 +1,6 @@
 import { Document, Schema, model } from 'mongoose';
 import { Speaker } from './speaker.interface';
 
-
-
 /**
  * @class containing all the information related to this event
  *
