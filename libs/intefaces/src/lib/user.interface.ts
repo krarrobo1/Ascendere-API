@@ -32,6 +32,8 @@ export class User extends Document {
   lastLoginAt: Date;
 }
 
+const rolesPermitidos: String[] = ['USER_ROLE', 'ADMIN_ROLE', 'DOCENTE_ROLE'];
+
 export class ProviderData {} // Cuentas
 
 let schema = new Schema(
@@ -47,7 +49,7 @@ let schema = new Schema(
     phoneNumber: { type: Number, required: false },
     img: { type: String, required: false },
     lastLoginAt: { type: Date, required: false },
-    role: { type: String, enum: [], default: 'USR_ROLE' }
+    role: { type: String, enum: rolesPermitidos, default: 'USER_ROLE' }
   },
   { timestamps: true }
 );

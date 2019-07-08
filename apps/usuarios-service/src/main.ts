@@ -3,16 +3,19 @@
  * This is only a minimal backend to get started.
  **/
 
-import * as express from 'express';
+import { userRouter } from './app/usuarios-crud.routes';
+import {
+  IndevExpressServer,
+  IndevDatabase
+} from '@ascendere/indev-express-server';
 
-const app = express();
-
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to usuarios-service!' });
+const server = new IndevExpressServer({
+  PORT: Number(process.env.PORT) || 3000,
+  DATABASE: IndevDatabase.mongoDB,
+  DB_URI: 'mongodb://localhost:27017/ascendere',
+  USE_BODYPARSER: true
 });
 
-const port = process.env.port || 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
-});
-server.on('error', console.error);
+server.app.use('/usuarios-service', [userRouter]);
+
+server.listen();
