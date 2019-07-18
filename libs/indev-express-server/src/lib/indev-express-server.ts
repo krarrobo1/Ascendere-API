@@ -10,8 +10,8 @@ import { IndevDatabase } from './indev-database';
  */
 export interface IndevExpressServerOptions {
   PORT: number;
-  DATABASE: IndevDatabase;
-  DB_URI: string;
+  DATABASE?: IndevDatabase;
+  DB_URI?: string;
   USE_BODYPARSER: Boolean;
 }
 
@@ -45,8 +45,7 @@ export class IndevExpressServer {
         `
       );
     });
-
-    this.connectToMongo();
+    if (this.options.DATABASE) this.connectToMongo();
   }
 
   private connectToMongo() {

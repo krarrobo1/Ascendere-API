@@ -1,6 +1,5 @@
 import { Router, Request, Response } from 'express';
 import { UserModel } from '@ascendere/intefaces';
-import { CLIENT_RENEG_LIMIT } from 'tls';
 
 export const userRouter = Router();
 
@@ -33,7 +32,6 @@ userRouter.post('/usuario', (request: Request, response: Response) => {
     nationality: body.nationality,
     ci: body.ci,
     email: body.email,
-    password: body.password,
     phoneNumber: body.phoneNumber,
     role: body.role
   });
@@ -45,6 +43,8 @@ userRouter.post('/usuario', (request: Request, response: Response) => {
     });
   });
 });
+
+// Update an user
 
 userRouter.put('/usuario/:id', (request: Request, response: Response) => {
   const id = request.params.id;
@@ -59,10 +59,8 @@ userRouter.put('/usuario/:id', (request: Request, response: Response) => {
     name: rawBody.name,
     lastName: rawBody.lastName,
     ci: rawBody.ci,
-    email: rawBody.email,
-    password: rawBody.password
+    email: rawBody.email
   };
-
   // clean body from null | undefined values
   for (var propName in body) {
     if (body[propName] === null || body[propName] === undefined) {
@@ -71,15 +69,17 @@ userRouter.put('/usuario/:id', (request: Request, response: Response) => {
   }
   UserModel.findById(id, options).exec((err, userDB) => {
     if (err) return response.status(500).json({ ok: false, ...err });
+    if (!userDB)
+      return response
+        .status(404)
+        .json({ ok: false, err: { message: `User with id:${id} not found!` } });
     for (const key in body) {
       userDB[key] = body[key];
     }
-    userDB.save({}, async (err, updated) => {
-      if (err) return response.status(500).json({ ok: false, ...err });
-      const updatedUser = await updated;
-      return response.status(200).json({
-        updatedUser
-      });
+    userDB.save();
+    response.status(200).json({
+      ok: true,
+      usuario: userDB
     });
   });
 });

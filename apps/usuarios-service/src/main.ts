@@ -3,7 +3,7 @@
  * This is only a minimal backend to get started.
  **/
 
-import { userRouter } from './app/usuarios-crud.routes';
+import { userRouter } from './app/routes/usuarios-crud.routes';
 import {
   IndevExpressServer,
   IndevDatabase

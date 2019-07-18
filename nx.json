@@ -25,6 +25,9 @@
     },
     "usuarios-service": {
       "tags": []
+    },
+    "email-service": {
+      "tags": []
     }
   }
 }

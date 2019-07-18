@@ -24,7 +24,6 @@ export class User extends Document {
   nationality: string;
   ci: string;
   email: string;
-  password: string;
   phoneNumber?: number;
   img: string;
   role: string;
@@ -45,7 +44,6 @@ let schema = new Schema(
     nationality: { type: String, required: false },
     ci: { type: String, required: [true, 'CI required'] },
     email: { type: String, required: [true, 'Email required'], unique: true },
-    password: { type: String, required: [true, 'Password required'] },
     phoneNumber: { type: Number, required: false },
     img: { type: String, required: false },
     lastLoginAt: { type: Date, required: false },
@@ -53,14 +51,6 @@ let schema = new Schema(
   },
   { timestamps: true }
 );
-
-schema.methods.toJSON = function() {
-  let user = this;
-  let userObj = user.toObject();
-  delete userObj.password;
-
-  return userObj;
-};
 
 schema.plugin(uniqueValidator, { message: '{PATH} must be unique' });
 /*let schema = new Schema({
